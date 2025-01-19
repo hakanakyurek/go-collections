@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOEXPERIMENT: aliastypeparams
+      GODEBUG: gotypesalias=1
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
