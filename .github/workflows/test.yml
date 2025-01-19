@@ -10,16 +10,19 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  setup:
     uses: ./.github/workflows/setup.yml
 
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
     steps:
       - name: Build
         run: go build -v ./...
 
   test:
-    uses: ./.github/workflows/setup.yml
-
+    needs: setup
+    runs-on: ubuntu-latest
     steps:
       - name: Test
         run: go test -v ./...
